@@ -8,14 +8,14 @@
   <!-- Font Caviar Dreams -->
   <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome pentru iconițe -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
       margin: 0;
       font-family: 'Caviar Dreams', sans-serif;
-      background-color: #000;
+      background-color: #0a0a0a;
       color: #fff;
       position: relative;
       min-height: 100vh;
@@ -26,24 +26,21 @@
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: rgba(0,0,0,0.92);
+      background-color: rgba(0,0,0,0.88);
       background-blend-mode: multiply;
       z-index: 0;
     }
 
-    /* Glow animat */
-    @keyframes subtleGlow {
-      0% { filter: drop-shadow(0 0 10px #d1b87a); }
-      50% { filter: drop-shadow(0 0 20px #d1b87a); }
-      100% { filter: drop-shadow(0 0 10px #d1b87a); }
+    @keyframes glowPulse {
+        0% { filter: drop-shadow(0 0 10px #d1b87a); transform: scale(1); }
+        50% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1.05); }
+        100% { filter: drop-shadow(0 0 10px #d1b87a); transform: scale(1); }
     }
 
     .content {
@@ -60,49 +57,30 @@
       min-height: 100vh;
     }
 
-    /* Logo stanga sus */
-    .logo-top-left {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: 100px;
-      background-image: url('logo.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 10;
-      border-radius: 50%;
-    }
-
-    /* Logo central cu glow + scale */
+    /* Logo central */
     .central-logo {
-      width: 350px;
-      height: 350px;
+      width: 400px;
+      height: 400px;
       margin-bottom: 20px;
       background-image: url('logo2.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      filter: drop-shadow(0 0 10px #d1b87a);
-      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
     }
 
     .central-logo:hover {
-      animation: subtleGlow 1.5s infinite alternate;
-      transform: scale(1.05);
+      animation: glowPulse 1.5s infinite alternate;
     }
 
-    .central-logo:active {
-      transform: scale(1.1);
-    }
-
-    /* Zona butoane */
+    /* Zona butoane principale */
     .button-area {
       width: 100%;
       max-width: 350px;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 15px;
+      margin-bottom: 20px;
     }
 
     .button {
@@ -130,17 +108,24 @@
       box-shadow: 0 4px 15px rgba(209,184,122,0.5);
     }
 
-    .button i { font-size: 1.3rem; color: #d1b87a; order: 2; margin-left: 10px; }
-    .button span { order: 1; }
+    .button i {
+      font-size: 1.3rem;
+      color: #d1b87a;
+      order: 2;
+      margin-left: 10px;
+    }
+
+    .button span {
+      order: 1;
+    }
 
     /* Social media */
     .social-title {
       color: #d1b87a;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 500;
       letter-spacing: 1px;
-      margin-top: 25px;
-      margin-bottom: 15px;
+      margin: 20px 0 10px 0;
     }
 
     .social-area {
@@ -161,48 +146,55 @@
       transform: translateY(-3px);
     }
 
-    /* Locatie si copyright sub social */
+    /* Meta info: locatie + copyright */
     .meta-info {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: #d1b87a;
+      margin-top: 10px;
     }
 
-    .location-button {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 15px;
-      margin-bottom: 5px;
-      border: 1px solid #d1b87a;
-      border-radius: 8px;
+    .meta-info a {
       color: #d1b87a;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      background-color: rgba(20,20,20,0.7);
-      transition: all 0.2s ease;
+      transition: color 0.2s;
     }
 
-    .location-button:hover {
-      background-color: #d1b87a;
-      color: #000;
+    .meta-info a:hover {
+      color: #fff;
     }
 
-    .location-button i { margin-right: 8px; }
-
-    .copyright {
-      font-size: 0.75rem;
-      color: #d1b87a;
-      display: block;
-      margin-top: 5px;
+    /* Logo sus stanga */
+    .logo-top-left {
+      position: absolute;
+      top: 20px; left: 20px;
+      width: 100px; height: 100px;
+      background-image: url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 10;
+      border-radius: 50%;
     }
 
-    /* Mobil */
-    @media (max-width: 450px) {
-      .logo-top-left { top: 10px; left: 10px; width: 80px; height: 80px; }
-      .central-logo { width: 250px; height: 250px; }
-      .social-button { font-size: 2rem; }
-      .location-button { font-size: 0.8rem; padding: 6px 12px; }
-      .copyright { font-size: 0.7rem; }
-      .social-title { font-size: 0.95rem; }
+    /* Responsive */
+    @media (max-width: 500px) {
+      .central-logo {
+        width: 300px; height: 300px;
+      }
+      .button {
+        font-size: 1rem;
+        padding: 12px;
+      }
+      .social-button {
+        font-size: 2rem;
+      }
+      .meta-info {
+        flex-direction: column;
+        gap: 5px;
+      }
     }
   </style>
 </head>
@@ -215,30 +207,27 @@
     <div class="central-logo"></div>
 
     <div class="button-area">
+      <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
+        <span>Fa-ti o programare</span> <i class="fas fa-calendar-check"></i>
+      </a>
 
-        <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
-          <span>FA-TI O PROGRAMARE ONLINE</span> <i class="fas fa-calendar-check"></i>
+      <p class="social-title">Aruncă un ochi la noi în peștera</p>
+      <div class="social-area">
+        <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="social-button">
+          <i class="fab fa-instagram"></i>
         </a>
-
-        <p class="social-title">ARUNCA UN OCHI LA NOI IN PESTERA</p>
-
-        <div class="social-area">
-             <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="social-button">
-                 <i class="fab fa-instagram"></i>
-             </a>
-             <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="social-button">
-                 <i class="fab fa-facebook-f"></i>
-             </a>
-        </div>
-
-        <div class="meta-info">
-          <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="location-button">
-              <i class="fas fa-map-marker-alt"></i> Vezi Locatia (Iasi)
-          </a>
-          <span class="copyright">© 2025 MEN'S CAVE BARBERSHOP</span>
-        </div>
-
+        <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="social-button">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
     </div>
+
+    <div class="meta-info">
+      <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">Vezi locația</a>
+      <span>© 2025 MEN'S CAVE BARBERSHOP</span>
+    </div>
+
   </div>
+
 </body>
 </html>
