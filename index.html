@@ -37,9 +37,9 @@
     }
 
     @keyframes glowPulse {
-      0% { filter: drop-shadow(0 0 20px #d1b87a); transform: scale(1); }
-      50% { filter: drop-shadow(0 0 30px #d1b87a); transform: scale(1.03); }
-      100% { filter: drop-shadow(0 0 20px #d1b87a); transform: scale(1); }
+      0% { filter: drop-shadow(0 0 15px #d1b87a); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1.03); }
+      100% { filter: drop-shadow(0 0 15px #d1b87a); transform: scale(1); }
     }
 
     .content {
@@ -52,11 +52,11 @@
       justify-content: center;
     }
 
-    /* Logo central +10% */
+    /* Logo central inițial */
     .central-logo {
-      width: 462px; /* +10% fata de 420px */
-      height: 462px;
-      margin-bottom: 25px;
+      width: 420px;
+      height: 420px;
+      margin-bottom: 40px;
       background-image: url('logo2.png');
       background-size: contain;
       background-repeat: no-repeat;
@@ -70,7 +70,11 @@
     }
 
     .button-area {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
     }
 
     .button {
@@ -78,7 +82,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 15px 20px;
+      padding: 15px 25px;
       border: 2px solid #d1b87a;
       border-radius: 10px;
       color: #d1b87a;
@@ -112,7 +116,7 @@
       font-size: 1.05rem;
       font-weight: 500;
       letter-spacing: 1px;
-      margin: 20px 0 10px 0;
+      margin-bottom: 10px;
     }
 
     .social-area {
@@ -140,6 +144,7 @@
       font-size: 0.9rem;
       color: #d1b87a;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .meta-info a {
@@ -168,10 +173,10 @@
     }
 
     @media (max-width: 500px) {
-      .central-logo { width: 360px; height: 360px; }
-      .button { font-size: 1rem; padding: 12px; }
+      .central-logo { width: 360px; height: 360px; margin-bottom: 30px; }
+      .button { font-size: 1rem; padding: 12px 20px; }
       .social-button { font-size: 2rem; }
-      .meta-info { flex-direction: column; gap: 5px; }
+      .meta-info { font-size: 0.85rem; gap: 10px; }
     }
   </style>
 </head>
@@ -189,6 +194,7 @@
       </a>
 
       <p class="social-title">Arunca un ochi la noi in pestera</p>
+
       <div class="social-area">
         <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="social-button">
           <i class="fab fa-instagram"></i>
