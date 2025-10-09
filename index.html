@@ -29,7 +29,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('background.png'); /* Foloseste PNG */
+      background-image: url('background.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -42,10 +42,9 @@
 
     /* -------------------------------------- */
     /* ANIMATIE LOGO GLOW (ZVACNITOR) */
-    /* Definirea animatiei de pulsare subtila */
     @keyframes subtleGlow {
         0% { filter: drop-shadow(0 0 10px #d1b87a); }
-        50% { filter: drop-shadow(0 0 20px #d1b87a); } /* Zvacnirea */
+        50% { filter: drop-shadow(0 0 20px #d1b87a); } 
         100% { filter: drop-shadow(0 0 10px #d1b87a); }
     }
     /* -------------------------------------- */
@@ -80,35 +79,65 @@
       border-radius: 50%; 
     }
 
-    /* 2. Logo-ul Central (logo2.png) - GLOW STATIC implicit */
+    /* 2. Logo-ul Central (logo2.png) - MARIT DUBLU */
     .central-logo {
-      width: 250px;
-      height: 250px;
-      margin-bottom: 50px; 
+      width: 350px; /* Marime mai mare */
+      height: 350px; /* Marime mai mare */
+      margin-bottom: 20px; /* Spatiu mai mic pentru a face loc noului 'footer' */
       position: relative;
       background-image: url('logo2.png'); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      /* Glow static */
       filter: drop-shadow(0 0 10px #d1b87a); 
       transition: filter 0.3s ease-in-out;
     }
 
-    /* EFECTUL NOU: Animatie la trecerea mouse-ului */
+    /* Animație la hover */
     .central-logo:hover {
         animation: subtleGlow 1.5s infinite alternate;
     }
 
-    /* Titlul nou de deasupra iconitelor */
-    .social-title {
-        color: #d1b87a;
-        font-size: 1.2rem;
-        font-weight: 500;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
+    /* NOU: Container pentru Locatie si Copyright (mutat din footer) */
+    .meta-info {
+        position: relative;
+        margin-bottom: 40px; /* Spatiu sub logo si deasupra butoanelor principale */
+        z-index: 1;
+        width: 100%;
+        max-width: 350px;
     }
 
+    /* Buton Locatie - Elegant, acum in 'meta-info' */
+    .location-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 15px;
+        margin-bottom: 5px;
+        border: 1px solid #d1b87a;
+        border-radius: 8px;
+        color: #d1b87a;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background-color: rgba(20, 20, 20, 0.7);
+        transition: all 0.2s ease;
+    }
+    
+    .location-button:hover {
+        background-color: #d1b87a;
+        color: #000;
+    }
+
+    .location-button i {
+        margin-right: 8px;
+    }
+    
+    .copyright {
+        font-size: 0.75rem;
+        color: #d1b87a;
+        display: block;
+    }
+    
     /* Zona de Butoane (Centru) */
     .button-area {
         width: 100%;
@@ -116,7 +145,6 @@
         display: grid;
         grid-template-columns: 1fr; 
         gap: 15px; 
-        margin-bottom: 40px;
     }
     
     .button {
@@ -144,9 +172,27 @@
       box-shadow: 0 4px 15px rgba(209,184,122,0.5);
     }
     
+    /* Iconita in interiorul butonului */
     .button i {
         font-size: 1.3rem;
         color: #d1b87a;
+        /* Mutam iconita in partea dreapta */
+        order: 2; 
+        margin-left: 10px;
+    }
+    .button span {
+        /* Textul in partea stanga */
+        order: 1;
+    }
+
+    /* Titlul nou de deasupra iconitelor */
+    .social-title {
+        color: #d1b87a;
+        font-size: 1.1rem; /* Usor mai mic decat butonul */
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-top: 25px; /* Spatiu mai mare */
+        margin-bottom: 15px;
     }
 
     /* Butoanele de Social Media */
@@ -155,7 +201,6 @@
         justify-content: center;
         gap: 30px; 
         width: 100%;
-        margin-top: 10px;
     }
 
     .social-button {
@@ -169,50 +214,6 @@
         transform: translateY(-3px); 
     }
 
-    /* FOOTER NOU - Fixat si Vizibil pe Mobil */
-    .app-footer {
-        position: fixed; 
-        bottom: 0px; 
-        left: 0;
-        width: 100%;
-        text-align: center;
-        z-index: 20; 
-        padding-bottom: 15px;
-        padding-top: 10px; 
-        background: rgba(0,0,0,0.8); 
-    }
-
-    /* Buton Locatie - Integrat in Footer */
-    .location-button {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 20px;
-        margin-bottom: 10px;
-        border: 1px solid #d1b87a;
-        border-radius: 8px;
-        color: #d1b87a;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        background-color: transparent;
-        transition: all 0.2s ease;
-    }
-    
-    .location-button:hover {
-        background-color: #d1b87a;
-        color: #000;
-    }
-
-    .location-button i {
-        margin-right: 8px;
-    }
-    
-    .copyright {
-        font-size: 0.8rem; 
-        color: #d1b87a;
-        display: block;
-        padding-top: 5px;
-    }
 
     /* Adaptare pentru mobil */
     @media (max-width: 450px) {
@@ -223,20 +224,21 @@
              height: 80px;
         }
         .central-logo {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
         }
         .social-button {
             font-size: 2rem;
         }
         .location-button {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            padding: 6px 12px;
         }
         .copyright {
             font-size: 0.7rem;
         }
         .social-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
     }
   </style>
@@ -249,13 +251,20 @@
     
     <div class="central-logo"></div>
     
+    <div class="meta-info">
+      <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="location-button">
+          <i class="fas fa-map-marker-alt"></i> Vezi Locatia (Iasi)
+      </a>
+      <span class="copyright">© 2025 MEN'S CAVE BARBERSHOP</span>
+    </div>
+    
     <div class="button-area">
         
         <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
-          <i class="fas fa-calendar-check"></i> **FA-TI O PROGRAMARE ONLINE**
+          <span>FA-TI O PROGRAMARE ONLINE</span> <i class="fas fa-calendar-check"></i>
         </a>
         
-        <p class="social-title">DESCOPERA LUMEA MEN'S CAVE BARBERSHOP</p>
+        <p class="social-title">ARUNCA UN OCHI LA NOI IN PESTERA</p>
 
         <div class="social-area">
              <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="social-button">
@@ -268,13 +277,5 @@
 
     </div>
   </div>
-
-  <div class="app-footer">
-      <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="location-button">
-          <i class="fas fa-map-marker-alt"></i> Vezi Locatia (Iasi)
-      </a>
-      <span class="copyright">© 2025 MEN'S CAVE BARBERSHOP</span>
-  </div>
-
 </body>
 </html>
