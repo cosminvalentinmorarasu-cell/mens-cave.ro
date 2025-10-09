@@ -18,7 +18,7 @@
       color: #fff;
       position: relative;
       height: 100vh;
-      overflow: hidden; 
+      overflow: hidden; /* Fără derulare pe desktop */
     }
 
     /* Fundalul (background.png) */
@@ -57,73 +57,65 @@
       justify-content: center; /* CENTRUL PAGINII */
     }
 
-    /* Logoul Dreapta Sus (logo.png) */
-    .logo-top-right {
+    /* Logoul Stânga Sus (logo.png) - Poziționat fix */
+    .logo-top-left {
       position: absolute;
       top: 20px; 
-      right: 20px; 
-      width: 80px; /* Mărime discretă */
-      height: 80px;
+      left: 20px; 
+      width: 100px; /* Mărime bună */
+      height: 100px;
       /* CALEA PNG */
       background-image: url('logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       z-index: 10; 
-      box-shadow: 0 0 10px rgba(209,184,122,0.6);
-      border-radius: 50%;
+      border-radius: 50%; /* Păstrăm cercul specific */
     }
 
-    /* Logo-ul Central (logo2.png) - Elementul principal */
+    /* Logo-ul Central (logo2.png) - Fără cerc, cu glow static */
     .central-logo {
       width: 250px;
       height: 250px;
-      margin-bottom: 40px;
+      margin-bottom: 50px; /* Spațiu sub logo */
       position: relative;
       /* CALEA PNG */
       background-image: url('logo2.png'); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      box-shadow: 0 0 25px rgba(209,184,122,0.8); /* Glow de bază */
-      border-radius: 50%;
-    }
-    
-    /* Keyframes pentru Efectul de Glou Animiat (de la stânga la dreapta) */
-    @keyframes shine {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
+      
+      /* Efect de strălucire statică - Glou subtil */
+      filter: drop-shadow(0 0 10px #d1b87a); 
     }
 
-    /* Suprapunerea care creează efectul de strălucire */
-    .central-logo::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            90deg, 
-            rgba(255, 255, 255, 0) 0%, 
-            rgba(255, 255, 255, 0.2) 50%, 
-            rgba(255, 255, 255, 0) 100%
-        );
-        /* Animația: 3 secunde, repetare infinită, liniară */
-        animation: shine 3s infinite linear;
-        border-radius: 50%;
-        mix-blend-mode: overlay;
-    }
-
-
-    /* Zona de Butoane (Centru) - Organizate Sub Logo */
+    /* Zona de Butoane (Centru) - Ultra Minimaliste */
     .button-area {
         width: 100%;
-        max-width: 450px; /* Lățime mai mică pentru aspect elegant pe desktop */
+        max-width: 350px; /* Lățime foarte mică pentru a fi elegant */
         display: grid;
-        grid-template-columns: 1fr; /* Prioritate Mobile: O singură coloană */
+        grid-template-columns: 1fr; /* O singură coloană pe mobil și desktop */
         gap: 15px; 
-        margin-bottom: 50px;
+        margin-bottom: 40px;
+    }
+    
+    /* Butoanele de Social Media - Aranjate pe o singură linie pe desktop */
+    .social-area {
+        display: flex;
+        justify-content: center;
+        gap: 25px; /* Spațiu mare între iconițe */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .social-button {
+        color: #d1b87a;
+        font-size: 2.2rem; /* Iconițe mari și vizibile */
+        transition: color 0.2s;
+    }
+
+    .social-button:hover {
+        color: #fff; /* Alăbește la hover */
     }
 
     .button {
@@ -156,47 +148,55 @@
         color: #d1b87a;
     }
 
-    /* Locația/Footer-ul Integrat (Stânga Jos) */
-    .location-footer {
-      position: absolute; /* Poziționat absolut față de .content */
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%); /* Centrare perfectă */
-      text-align: center;
-      font-size: 0.8rem;
-      color: #d1b87a;
-      padding: 10px 0;
-      width: 90%;
-      max-width: 450px;
+    /* FOOTER NOU - Locație și Copyright */
+    .app-footer {
+        position: absolute; 
+        bottom: 0px; 
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 10; 
+        padding-bottom: 10px;
     }
 
-    .location-footer a {
+    /* Buton Locație - Integrat în Footer */
+    .location-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 15px;
+        margin-bottom: 10px;
+        border: 1px solid #d1b87a;
+        border-radius: 8px;
         color: #d1b87a;
         text-decoration: none;
-        margin: 0 5px;
-        transition: color 0.2s;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background-color: rgba(20, 20, 20, 0.7);
+        transition: all 0.2s ease;
+    }
+    
+    .location-button:hover {
+        background-color: #d1b87a;
+        color: #000;
     }
 
-    .location-footer a:hover {
-        color: #fff;
+    .location-button i {
+        margin-right: 8px;
+    }
+    
+    .copyright {
+        font-size: 0.7rem;
+        color: #d1b87a;
+        display: block;
     }
 
-
-    /* Desktop: Butoanele în două coloane */
-    @media (min-width: 700px) {
-        .button-area {
-            grid-template-columns: 1fr 1fr; 
-            max-width: 600px;
-        }
-    }
-
-    /* Ajustări pe Mobil */
+    /* Adaptare pentru mobil */
     @media (max-width: 450px) {
-        .logo-top-right {
+        .logo-top-left {
              top: 10px; 
-             right: 10px;
-             width: 60px; 
-             height: 60px;
+             left: 10px;
+             width: 80px; 
+             height: 80px;
         }
         .central-logo {
             width: 200px;
@@ -204,14 +204,19 @@
         }
         .button-area {
             gap: 10px;
-            margin-bottom: 40px;
+        }
+        .social-area {
+            gap: 20px;
+        }
+        .social-button {
+            font-size: 1.8rem;
         }
     }
   </style>
 </head>
 <body>
 
-  <div class="logo-top-right"></div>
+  <div class="logo-top-left"></div>
   
   <div class="content">
     
@@ -223,31 +228,23 @@
           <i class="fas fa-calendar-check"></i> **REZERVĂ ACUM**
         </a>
         
-        <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="button">
-          <i class="fas fa-map-marker-alt"></i> UNDE NE GĂSEȘTI
-        </a>
-        
-        <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="button">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        
-        <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="button">
-          <i class="fab fa-facebook-f"></i> Facebook
-        </a>
-        
-        <a href="https://www.google.com/search?q=mens+cave+barbershop+iasi&ludocid=YOUR_GOOGLE_PLACE_ID#lrd=0x0:0x0,1,,," target="_blank" class="button">
-          <i class="fas fa-star"></i> Review Google
-        </a>
-        
-        <a href="#" class="button">
-          <i class="fas fa-scissors"></i> Viziunea noastră
-        </a>
-    </div>
+        <div class="social-area">
+             <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="social-button">
+                 <i class="fab fa-instagram"></i>
+             </a>
+             <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="social-button">
+                 <i class="fab fa-facebook-f"></i>
+             </a>
+        </div>
 
-    <div class="location-footer">
-        <i class="fas fa-map-pin"></i> Iași, România 
-        <br>© 2025 MEN'S CAVE BARBERSHOP
     </div>
+  </div>
+
+  <div class="app-footer">
+      <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="location-button">
+          <i class="fas fa-map-marker-alt"></i> Vezi Locația (Iași)
+      </a>
+      <span class="copyright">© 2025 MEN'S CAVE BARBERSHOP</span>
   </div>
 
 </body>
