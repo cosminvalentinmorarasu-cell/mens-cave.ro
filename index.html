@@ -15,8 +15,11 @@
       background-color: #0a0a0a;
       color: #fff;
       position: relative;
-      min-height: 100vh;
-      overflow-x: hidden;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     body::before {
@@ -34,35 +37,31 @@
     }
 
     @keyframes glowPulse {
-      0% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
-      50% { filter: drop-shadow(0 0 35px #d1b87a); transform: scale(1.05); }
-      100% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
+      0% { filter: drop-shadow(0 0 20px #d1b87a); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 30px #d1b87a); transform: scale(1.03); }
+      100% { filter: drop-shadow(0 0 20px #d1b87a); transform: scale(1); }
     }
 
     .content {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
       justify-content: center;
-      min-height: 100vh;
     }
 
-    /* Logo central cu 20% mai mare */
+    /* Logo central +10% */
     .central-logo {
-      width: 504px; /* +20% fata de 420px */
-      height: 504px;
-      margin-bottom: 20px;
+      width: 462px; /* +10% fata de 420px */
+      height: 462px;
+      margin-bottom: 25px;
       background-image: url('logo2.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      filter: drop-shadow(0 0 30px #d1b87a); /* glow permanent */
+      filter: drop-shadow(0 0 20px #d1b87a);
       transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
     }
 
@@ -71,36 +70,28 @@
     }
 
     .button-area {
-      width: 100%;
-      max-width: 350px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 30px; /* mutat un pic mai sus */
+      margin-bottom: 25px;
     }
 
-    /* Buton programare cu glow galben subtil la hover */
     .button {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 15px;
+      padding: 15px 20px;
       border: 2px solid #d1b87a;
       border-radius: 10px;
       color: #d1b87a;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
-      transition: all 0.3s ease;
       background-color: transparent;
       box-shadow: 0 0 10px rgba(209,184,122,0.2);
-      height: 50px;
+      transition: all 0.3s ease;
     }
 
     .button:hover {
       background-color: rgba(209,184,122,0.15);
-      color: #d1b87a;
       transform: scale(1.02);
       box-shadow: 0 4px 15px rgba(209,184,122,0.4);
     }
@@ -142,14 +133,12 @@
       transform: translateY(-3px);
     }
 
-    /* Meta info: Vezi locatie + © pe acelasi rand */
     .meta-info {
       display: flex;
       justify-content: center;
       gap: 15px;
       font-size: 0.9rem;
       color: #d1b87a;
-      margin-top: 10px;
       align-items: center;
     }
 
@@ -179,20 +168,10 @@
     }
 
     @media (max-width: 500px) {
-      .central-logo {
-        width: 360px; height: 360px;
-      }
-      .button {
-        font-size: 1rem;
-        padding: 12px;
-      }
-      .social-button {
-        font-size: 2rem;
-      }
-      .meta-info {
-        flex-direction: column;
-        gap: 5px;
-      }
+      .central-logo { width: 360px; height: 360px; }
+      .button { font-size: 1rem; padding: 12px; }
+      .social-button { font-size: 2rem; }
+      .meta-info { flex-direction: column; gap: 5px; }
     }
   </style>
 </head>
