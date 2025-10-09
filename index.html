@@ -34,9 +34,9 @@
     }
 
     @keyframes glowPulse {
-        0% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
-        50% { filter: drop-shadow(0 0 35px #d1b87a); transform: scale(1.05); }
-        100% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
+      0% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 35px #d1b87a); transform: scale(1.05); }
+      100% { filter: drop-shadow(0 0 25px #d1b87a); transform: scale(1); }
     }
 
     .content {
@@ -53,9 +53,10 @@
       min-height: 100vh;
     }
 
+    /* Logo central cu 20% mai mare */
     .central-logo {
-      width: 420px;
-      height: 420px;
+      width: 504px; /* +20% fata de 420px */
+      height: 504px;
       margin-bottom: 20px;
       background-image: url('logo2.png');
       background-size: contain;
@@ -75,9 +76,10 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 30px; /* mutat un pic mai sus */
     }
 
+    /* Buton programare cu glow galben subtil la hover */
     .button {
       display: flex;
       align-items: center;
@@ -90,7 +92,7 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
       background-color: transparent;
       box-shadow: 0 0 10px rgba(209,184,122,0.2);
       height: 50px;
@@ -100,7 +102,7 @@
       background-color: rgba(209,184,122,0.15);
       color: #d1b87a;
       transform: scale(1.02);
-      box-shadow: 0 4px 15px rgba(209,184,122,0.5);
+      box-shadow: 0 4px 15px rgba(209,184,122,0.4);
     }
 
     .button i {
@@ -140,6 +142,7 @@
       transform: translateY(-3px);
     }
 
+    /* Meta info: Vezi locatie + © pe acelasi rand */
     .meta-info {
       display: flex;
       justify-content: center;
@@ -177,7 +180,7 @@
 
     @media (max-width: 500px) {
       .central-logo {
-        width: 300px; height: 300px;
+        width: 360px; height: 360px;
       }
       .button {
         font-size: 1rem;
