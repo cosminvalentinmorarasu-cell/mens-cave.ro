@@ -22,7 +22,6 @@
       overflow: hidden;
     }
 
-    /* Fundal static + particule */
     body::before {
       content: "";
       position: fixed;
@@ -97,7 +96,7 @@
       100% { filter: drop-shadow(0 0 3px #d1b87a); }
     }
 
-    /* Buton programare */
+    /* Buton Fa-ti o programare */
     .button {
       display: flex;
       align-items: center;
@@ -135,7 +134,7 @@
       color: #fff;
     }
 
-    /* Social media */
+    /* Social media fără chenar, cu hover ca buton */
     .social-title {
       color: #d1b87a;
       font-size: 1.1rem;
@@ -154,12 +153,12 @@
     .social-button {
       color: #d1b87a;
       font-size: 2.5rem;
-      transition: color 0.2s, transform 0.2s;
+      transition: all 0.3s ease;
     }
 
     .social-button:hover {
+      transform: scale(1.02);
       color: #fff;
-      transform: translateY(-3px);
     }
 
     /* Meta info */
@@ -236,10 +235,10 @@
     <!-- Social media -->
     <p class="social-title">Arunca un ochi la noi in pestera</p>
     <div class="social-area">
-      <a href="https://instagram.com/mens.cave.barbershop.iasi" class="social-button" target="_blank" title="Instagram">
+      <a href="#" class="social-button" onclick="openSocial('instagram://user?username=mens.cave.barbershop.iasi','https://instagram.com/mens.cave.barbershop.iasi')" title="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="https://facebook.com/mens.cave.barbershop.iasi" class="social-button" target="_blank" title="Facebook">
+      <a href="#" class="social-button" onclick="openSocial('fb://page/1234567890','https://facebook.com/mens.cave.barbershop.iasi')" title="Facebook">
         <i class="fab fa-facebook-f"></i>
       </a>
     </div>
@@ -253,7 +252,7 @@
     </div>
   </div>
 
-  <!-- Script particule fundal -->
+  <!-- Script particule -->
   <script>
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
@@ -270,10 +269,10 @@
     function Particle() {
       this.x = Math.random() * w;
       this.y = Math.random() * h;
-      this.radius = Math.random() * 2 + 1;
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.speedY = (Math.random() - 0.5) * 0.5;
-      this.alpha = Math.random() * 0.7 + 0.3;
+      this.radius = Math.random() * 1 + 0.5; // mai mic
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.alpha = Math.random() * 0.5 + 0.3;
     }
 
     Particle.prototype.update = function() {
@@ -308,8 +307,21 @@
       requestAnimationFrame(animate);
     }
 
-    initParticles(80);
+    initParticles(40); // jumătate din original
     animate();
+
+    // Funcție social cu fallback
+    function openSocial(appLink, webLink) {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isMobile = /android|iPad|iPhone|iPod/i.test(ua);
+
+      if (isMobile) {
+        window.location = appLink;
+        setTimeout(() => { window.location = webLink; }, 500);
+      } else {
+        window.open(webLink, '_blank');
+      }
+    }
   </script>
 </body>
 </html>
