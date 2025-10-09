@@ -45,7 +45,6 @@
       pointer-events: none;
     }
 
-    /* Logo simplu în stânga sus */
     .main-logo {
       position: absolute;
       top: 15px;
@@ -59,7 +58,6 @@
       z-index: 2;
     }
 
-    /* Container central */
     .content {
       position: relative;
       z-index: 1;
@@ -70,12 +68,10 @@
       height: 100%;
       padding: 20px;
       text-align: center;
-
-      max-width: 1200px; /* limităm lățimea pe desktop */
-      margin: 0 auto;    /* centrare pe desktop */
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* Logo2 central cu sclipire */
     .central-logo {
       width: 300px;
       height: 300px;
@@ -99,7 +95,6 @@
       100% { filter: drop-shadow(0 0 3px #d1b87a); }
     }
 
-    /* Buton Fa-ti o programare */
     .button {
       display: flex;
       align-items: center;
@@ -137,7 +132,6 @@
       color: #fff;
     }
 
-    /* Social media fără chenar, cu hover ca buton */
     .social-title {
       color: #d1b87a;
       font-size: 1.1rem;
@@ -164,7 +158,6 @@
       color: #fff;
     }
 
-    /* Meta info */
     .meta-info {
       color: #d1b87a;
       font-size: 0.9rem;
@@ -191,7 +184,7 @@
       color: #fff;
     }
 
-    /* Responsive */
+    /* ✅ Ajustări pentru mobil */
     @media (max-width: 450px) {
       .main-logo {
         width: 70px;
@@ -202,11 +195,19 @@
       .central-logo {
         width: 200px;
         height: 200px;
-        margin-bottom: 20px;
+        margin-bottom: 10px; /* mai sus cu ~2 rânduri */
       }
       .button {
         font-size: 0.95rem;
         padding: 10px 15px;
+        margin-bottom: 15px; /* mai sus cu ~2 rânduri */
+      }
+      .social-title {
+        margin-top: -10px; /* urcat puțin mai sus cu 1 rând */
+        margin-bottom: 10px;
+      }
+      .social-area {
+        margin-bottom: 15px; /* mai compact */
       }
       .social-button {
         font-size: 1.8rem;
@@ -215,6 +216,7 @@
         flex-direction: column;
         gap: 5px;
         font-size: 0.8rem;
+        margin-top: -5px; /* puțin mai sus general */
       }
     }
   </style>
@@ -222,20 +224,16 @@
 <body>
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Logo simplu în stânga sus -->
   <div class="main-logo"></div>
 
   <div class="content">
-    <!-- Logo2 central -->
     <div class="central-logo"></div>
 
-    <!-- Buton programare -->
     <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
       <i class="fas fa-calendar-check"></i>
       <span>Fa-ti o programare</span>
     </a>
 
-    <!-- Social media -->
     <p class="social-title">Arunca un ochi la noi in pestera</p>
     <div class="social-area">
       <a href="#" class="social-button" onclick="openSocial('instagram://user?username=mens.cave.barbershop.iasi','https://instagram.com/mens.cave.barbershop.iasi')" title="Instagram">
@@ -246,7 +244,6 @@
       </a>
     </div>
 
-    <!-- Meta info -->
     <div class="meta-info">
       <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
         <i class="fas fa-map-marker-alt"></i> Vezi locatie
@@ -255,7 +252,6 @@
     </div>
   </div>
 
-  <!-- Script particule -->
   <script>
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
@@ -272,7 +268,7 @@
     function Particle() {
       this.x = Math.random() * w;
       this.y = Math.random() * h;
-      this.radius = Math.random() * 1 + 0.5; // mai mici
+      this.radius = Math.random() * 1 + 0.5;
       this.speedX = (Math.random() - 0.5) * 0.3;
       this.speedY = (Math.random() - 0.5) * 0.3;
       this.alpha = Math.random() * 0.5 + 0.3;
@@ -310,10 +306,9 @@
       requestAnimationFrame(animate);
     }
 
-    initParticles(40); // mai puține particule
+    initParticles(40);
     animate();
 
-    // Funcție social cu fallback
     function openSocial(appLink, webLink) {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
       const isMobile = /android|iPad|iPhone|iPod/i.test(ua);
