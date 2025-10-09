@@ -10,17 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* Reset și Setări de Bază */
     body {
       margin: 0;
       font-family: 'Caviar Dreams', sans-serif;
       background-color: #000;
       color: #fff;
       position: relative;
-      min-height: 100vh;
-      overflow-x: hidden;
+      /* Eliminăm orice posibilitate de derulare */
+      height: 100vh;
+      overflow: hidden; 
     }
 
-    /* Fundalul NOU: background2.png cu efect de "glou" */
+    /* Fundalul: Background2.JPG - CLAR, FĂRĂ BLUR */
     body::before {
       content: "";
       position: fixed;
@@ -28,50 +30,52 @@
       left: 0;
       width: 100%;
       height: 100%;
-      /* CALE SIMPLIFICATĂ (fără foldere) */
-      background-image: url('background2.png'); 
+      /* CALEA FINALĂ: .jpg */
+      background-image: url('background2.jpg'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       
-      /* EFECTUL DE GLOU: Opacitate mare, întunecare și blur subtil */
-      opacity: 0.8; 
-      filter: brightness(0.7) blur(2px); /* Întunecare și estompare */
-      
+      /* Strat semi-transparent negru peste imagine */
+      background-color: rgba(0, 0, 0, 0.5); 
+      background-blend-mode: darken;
+      opacity: 1; 
+      filter: none; 
       z-index: 0;
     }
 
-    /* Container principal */
+    /* Containerul principal care ocupă toată înălțimea ecranului */
     .content {
       position: relative;
       z-index: 1;
-      max-width: 1000px;
+      max-width: 900px;
+      height: 100vh; /* Ocupă toată înălțimea ecranului */
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 60px 20px 40px 20px; /* Am mărit padding-ul de sus pentru a coborî titlul */
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      justify-content: space-between; /* Distribuie spațiul între elemente */
     }
 
-    /* Logo - Am intensificat glow-ul */
+    /* Zona de sus: Titlu */
+    .header-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    /* Logo - CSS-ul a rămas, dar elementul HTML a fost scos */
     .logo {
-      width: 220px;
-      height: 220px;
-      /* CALE SIMPLIFICATĂ (fără foldere) */
-      background-image: url('logo.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin-bottom: 20px;
-      box-shadow: 0 0 40px rgba(209,184,122,0.7); 
-      border-radius: 50%;
+      display: none; /* Ascundem forțat CSS-ul Logo-ului */
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3rem; /* Am mărit titlul puțin */
       letter-spacing: 4px;
-      margin: 10px 0 5px 0;
+      margin: 0;
     }
 
     h2 {
@@ -79,137 +83,105 @@
       font-size: 1.4rem;
       letter-spacing: 2px;
       color: #d1b87a;
-      margin-bottom: 50px;
+      margin-bottom: 50px; /* Spațiu mai mare sub subtitlu */
     }
-
-    /* Secțiuni */
-    .section {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 60px;
-      padding: 40px 20px;
-      background-color: rgba(10,10,10,0.95);
-      border: 2px solid #d1b87a;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(209,184,122,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 35px rgba(209,184,122,0.3);
-    }
-
-    .section i {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: #d1b87a;
-    }
-
-    .section h3 {
-      font-size: 1.6rem;
-      margin: 0 0 15px 0;
-      color: #d1b87a;
-    }
-
-    .section p {
-      font-weight: 300;
-      margin: 0 0 20px 0;
+    
+    /* Zona de Butoane (Centru) */
+    .button-area {
+        width: 100%;
+        max-width: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Două coloane pentru butoane */
+        gap: 15px;
+        margin: auto; /* Centrează butoanele pe mijlocul ecranului */
+        padding-bottom: 20px;
     }
 
     .button {
-      display: inline-flex;
+      display: flex; 
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 15px 35px;
+      padding: 15px 15px; 
       border: 1px solid #d1b87a;
-      border-radius: 30px;
+      border-radius: 10px; 
       color: #d1b87a;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      margin-top: 10px;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      background-color: rgba(20, 20, 20, 0.85); 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      height: 60px; 
     }
 
     .button:hover {
       background-color: #d1b87a;
       color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(209,184,122,0.4);
+    }
+    
+    .button i {
+        font-size: 1.2rem;
     }
 
-    .social-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* Secțiuni mobile: Pe mobil, trecem la o singură coloană */
+    @media (max-width: 700px) {
+        body { overflow-y: auto; } /* Permitem scroll pe mobil, dacă e necesar */
+        .content { height: auto; justify-content: flex-start; padding-top: 40px; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.2rem; }
+        .button-area {
+            grid-template-columns: 1fr; /* O singură coloană pe ecrane mici */
+            gap: 10px;
+        }
+        .button { padding: 12px 10px; font-size: 0.9rem; height: 50px; }
     }
-
+    
     footer {
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #777;
-      margin-top: 40px;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 700px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 1.2rem; }
-      .logo { width: 160px; height: 160px; }
-      .section { padding: 25px 15px; }
-      .button { padding: 12px 25px; font-size: 1rem; }
-    }
-
-    @media (max-width: 500px) {
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1rem; }
-      .section i { font-size: 2rem; }
+      padding-top: 20px; 
+      width: 100%;
     }
   </style>
 </head>
 <body>
 
   <div class="content">
-    <div class="logo"></div>
-
-    <h1>MEN'S CAVE</h1>
-    <h2>BARBERSHOP</h2>
-
-    <div class="section">
-      <i class="fas fa-calendar-check"></i>
-      <h3>Rezervă acum</h3>
-      <p>Programează-te rapid prin aplicația AI Liber.</p>
-      <a href="https://ailiber.ro/" target="_blank" class="button">Programări</a>
+    
+    <div class="header-area">
+        <h1>MEN'S CAVE</h1>
+        <h2>BARBERSHOP</h2>
     </div>
 
-    <div class="section">
-      <i class="fas fa-map-marker-alt"></i>
-      <h3>Unde ne găsești</h3>
-      <p>Vino să descoperi peștera noastră la adresa din Iași.</p>
-      <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="button">Vezi pe hartă</a>
-    </div>
-
-    <div class="section">
-      <i class="fas fa-hands"></i>
-      <h3>Aruncă un ochi în peștera noastră</h3>
-      <p>Urmărește-ne pe Instagram și Facebook pentru ultimele tunsori și look-uri.</p>
-      <div class="social-buttons">
+    <div class="button-area">
+        
+        <a href="https://ailiber.ro/" target="_blank" class="button">
+          <i class="fas fa-calendar-check"></i> Rezervă acum
+        </a>
+        
+        <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="button">
+          <i class="fas fa-map-marker-alt"></i> Unde ne găsești
+        </a>
+        
         <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="button">
           <i class="fab fa-instagram"></i> Instagram
         </a>
+        
         <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="button">
           <i class="fab fa-facebook-f"></i> Facebook
         </a>
-      </div>
-    </div>
-
-    <div class="section">
-      <i class="fas fa-star"></i>
-      <h3>Ne poți evalua</h3>
-      <p>Ne-ar face plăcere să ne lași un review pe Google!</p>
-      <a href="https://www.google.com/search?q=mens+cave+barbershop+iasi&ludocid=YOUR_GOOGLE_PLACE_ID#lrd=0x0:0x0,1,,," target="_blank" class="button">Vezi ratingul pe Google</a>
+        
+        <a href="https://www.google.com/search?q=mens+cave+barbershop+iasi&ludocid=YOUR_GOOGLE_PLACE_ID#lrd=0x0:0x0,1,,," target="_blank" class="button">
+          <i class="fas fa-star"></i> Review Google
+        </a>
+        
+        <a href="#" class="button">
+          <i class="fas fa-scissors"></i> Viziunea noastră
+        </a>
     </div>
 
     <footer>© 2025 MEN'S CAVE BARBERSHOP</footer>
