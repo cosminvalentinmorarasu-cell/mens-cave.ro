@@ -5,43 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MEN'S CAVE BARBERSHOP</title>
 
-  <!-- Font modern -->
-  <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+  <!-- Font Caviar Dreams -->
+  <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
 
   <!-- Font Awesome pentru iconițe -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* Reset și body */
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #0f0f0f;
-      color: #f5f5f5;
-      font-family: 'Montserrat', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Caviar Dreams', sans-serif;
       text-align: center;
     }
 
+    /* Titlu */
     h1 {
       font-size: 3rem;
       letter-spacing: 4px;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
     h2 {
       font-weight: 300;
-      letter-spacing: 2px;
       font-size: 1.2rem;
-      margin-bottom: 40px;
+      letter-spacing: 2px;
+      margin: 10px 0 40px 0;
       color: #d1b87a;
     }
 
-    .links a {
-      display: inline-block;
-      margin: 10px;
+    /* Butoane */
+    .links, .apps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .links a, .apps a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 12px 25px;
       border: 1px solid #d1b87a;
       border-radius: 30px;
@@ -51,43 +63,71 @@
       transition: all 0.3s ease;
     }
 
-    .links a:hover {
+    .links a:hover, .apps a:hover {
       background-color: #d1b87a;
-      color: #0f0f0f;
+      color: #000000;
     }
 
-    .logo {
-      width: 100px;
-      height: 100px;
-      background-image: url('logo.png'); /* pune logo-ul tău aici */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin-bottom: 20px;
-    }
-
+    /* Footer */
     footer {
-      position: absolute;
-      bottom: 15px;
+      margin-top: 40px;
       font-size: 0.8rem;
       color: #777;
       letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      .links a, .apps a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="logo"></div>
-  <h1>MEN’S CAVE</h1>
+  <!-- Titlu -->
+  <h1>MEN'S CAVE</h1>
   <h2>BARBERSHOP</h2>
 
+  <!-- Linkuri Social Media -->
   <div class="links">
-    <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="https://maps.google.com/" target="_blank"><i class="fas fa-map-marker-alt"></i> Locație</a>
+    <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
+      <i class="fas fa-map-marker-alt"></i> Locație
+    </a>
   </div>
 
-  <footer>© 2025 MEN’S CAVE BARBERSHOP</footer>
+  <!-- Linkuri aplicație -->
+  <div class="apps">
+    <a href="https://ailiber.ro/" target="_blank">
+      <i class="fas fa-calendar-check"></i> Programări Online
+    </a>
+    <a href="https://apps.apple.com/" target="_blank">
+      <i class="fab fa-apple"></i> App Store
+    </a>
+    <a href="https://play.google.com/store" target="_blank">
+      <i class="fab fa-google-play"></i> Google Play
+    </a>
+    <a href="https://appgallery.huawei.com/" target="_blank">
+      <i class="fas fa-mobile-alt"></i> AppGallery
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>© 2025 MEN'S CAVE BARBERSHOP</footer>
 
 </body>
 </html>
