@@ -69,8 +69,8 @@
       filter: drop-shadow(0 0 20px #d1b87a);
     }
 
-    /* Buton Fa-ti o programare + Social media uniform */
-    .button, .social-button-style {
+    /* Buton Fa-ti o programare */
+    .button {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -87,21 +87,21 @@
       transition: all 0.3s ease;
       max-width: 350px;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .button:hover, .social-button-style:hover {
+    .button:hover {
       transform: scale(1.02);
       box-shadow: 0 4px 15px rgba(209,184,122,0.5);
       background-color: rgba(209,184,122,0.15);
     }
 
-    .button i, .social-button-style i {
+    .button i {
       font-size: 1.3rem;
       color: #d1b87a;
     }
 
-    /* Social media area */
+    /* Social media */
     .social-title {
       color: #d1b87a;
       font-size: 1.1rem;
@@ -113,27 +113,40 @@
     .social-area {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 30px;
       margin-bottom: 25px;
-      width: 100%;
-      max-width: 350px;
     }
 
-    /* Meta info */
+    .social-button {
+      color: #d1b87a;
+      font-size: 2.5rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .social-button:hover {
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* Meta info: Vezi locatie + copyright */
     .meta-info {
       color: #d1b87a;
       font-size: 0.9rem;
       display: flex;
+      flex-direction: row;
+      gap: 10px;
       justify-content: center;
       align-items: center;
-      gap: 5px;
       flex-wrap: wrap;
     }
 
     .meta-info a {
       color: #d1b87a;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
     }
 
     .meta-info a:hover {
@@ -146,17 +159,17 @@
         width: 200px;
         height: 200px;
       }
-      .button, .social-button-style {
+      .button {
         font-size: 1rem;
         padding: 12px;
       }
-      .social-title {
-        font-size: 1rem;
+      .social-button {
+        font-size: 2rem;
       }
       .meta-info {
-        font-size: 0.8rem;
         flex-direction: column;
         gap: 5px;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -175,20 +188,20 @@
     <!-- Social media -->
     <p class="social-title">Arunca un ochi la noi in pestera</p>
     <div class="social-area">
-      <a href="instagram://user?username=mens.cave.barbershop.iasi" class="social-button-style">
+      <a href="instagram://user?username=mens.cave.barbershop.iasi" class="social-button">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="fb://page/1234567890" class="social-button-style">
+      <a href="fb://page/1234567890" class="social-button">
         <i class="fab fa-facebook-f"></i>
       </a>
     </div>
 
-    <!-- Meta info -->
+    <!-- Meta info: Vezi locatie + copyright -->
     <div class="meta-info">
-      <span>© 2025 MEN'S CAVE BARBERSHOP</span>
       <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
-        <i class="fas fa-map-marker-alt"></i>
+        <i class="fas fa-map-marker-alt"></i> Vezi locatie
       </a>
+      <span>© 2025 MEN'S CAVE BARBERSHOP</span>
     </div>
   </div>
 </body>
