@@ -20,17 +20,14 @@
       position: relative;
       height: 100vh;
       overflow: hidden;
-      text-align: center;
     }
 
-    /* Fundal static cu blend */
+    /* Fundal static + particule */
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('background.png');
       background-size: cover;
       background-position: center;
@@ -41,17 +38,29 @@
       z-index: 0;
     }
 
-    /* Canvas pentru particule */
     #particle-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top:0; left:0;
+      width:100%; height:100%;
       z-index: 0;
       pointer-events: none;
     }
 
+    /* Logo simplu în stânga sus */
+    .main-logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 100px;
+      height: 100px;
+      background-image: url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 2;
+    }
+
+    /* Container central */
     .content {
       position: relative;
       z-index: 1;
@@ -61,23 +70,13 @@
       justify-content: center;
       height: 100%;
       padding: 20px;
+      text-align: center;
     }
 
-    /* Logo principal */
-    .main-logo {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 20px;
-      background-image: url('logo.png'); /* Logo-ul care îți place */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    /* Logo 2 cu sclipire subtilă */
+    /* Logo2 central cu sclipire */
     .central-logo {
-      width: 250px;
-      height: 250px;
+      width: 300px;
+      height: 300px;
       margin-bottom: 30px;
       background-image: url('logo2.png');
       background-size: contain;
@@ -98,7 +97,7 @@
       100% { filter: drop-shadow(0 0 3px #d1b87a); }
     }
 
-    /* Buton Fa-ti o programare */
+    /* Buton programare */
     .button {
       display: flex;
       align-items: center;
@@ -193,12 +192,15 @@
     /* Responsive */
     @media (max-width: 450px) {
       .main-logo {
-        width: 150px;
-        height: 150px;
+        width: 70px;
+        height: 70px;
+        top: 10px;
+        left: 10px;
       }
       .central-logo {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
       }
       .button {
         font-size: 0.95rem;
@@ -218,14 +220,14 @@
 <body>
   <canvas id="particle-canvas"></canvas>
 
-  <div class="content">
-    <!-- Logo principal -->
-    <div class="main-logo"></div>
+  <!-- Logo simplu în stânga sus -->
+  <div class="main-logo"></div>
 
-    <!-- Logo 2 cu sclipire -->
+  <div class="content">
+    <!-- Logo2 central -->
     <div class="central-logo"></div>
 
-    <!-- Buton Fa-ti o programare -->
+    <!-- Buton programare -->
     <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
       <i class="fas fa-calendar-check"></i>
       <span>Fa-ti o programare</span>
