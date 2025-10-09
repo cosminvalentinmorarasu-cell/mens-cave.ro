@@ -57,6 +57,23 @@
       justify-content: center; /* CENTRUL PAGINII */
     }
 
+    /* Logoul Dreapta Sus (logo.png) */
+    .logo-top-right {
+      position: absolute;
+      top: 20px; 
+      right: 20px; 
+      width: 80px; /* Mărime discretă */
+      height: 80px;
+      /* CALEA PNG */
+      background-image: url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 10; 
+      box-shadow: 0 0 10px rgba(209,184,122,0.6);
+      border-radius: 50%;
+    }
+
     /* Logo-ul Central (logo2.png) - Elementul principal */
     .central-logo {
       width: 250px;
@@ -175,6 +192,12 @@
 
     /* Ajustări pe Mobil */
     @media (max-width: 450px) {
+        .logo-top-right {
+             top: 10px; 
+             right: 10px;
+             width: 60px; 
+             height: 60px;
+        }
         .central-logo {
             width: 200px;
             height: 200px;
@@ -188,6 +211,8 @@
 </head>
 <body>
 
+  <div class="logo-top-right"></div>
+  
   <div class="content">
     
     <div class="central-logo"></div>
