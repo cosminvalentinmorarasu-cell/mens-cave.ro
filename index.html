@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Reset & body */
     body {
       margin: 0;
       font-family: 'Caviar Dreams', sans-serif;
@@ -24,7 +23,7 @@
       text-align: center;
     }
 
-    /* Fundal PNG peste negru cu blend și blur cinematic */
+    /* Fundal static cu blend */
     body::before {
       content: "";
       position: fixed;
@@ -38,11 +37,21 @@
       background-repeat: no-repeat;
       background-color: rgba(0,0,0,0.8);
       background-blend-mode: multiply;
-      filter: brightness(0.7) blur(1px);
+      filter: brightness(0.7);
       z-index: 0;
     }
 
-    /* Container principal */
+    /* Canvas pentru particule */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .content {
       position: relative;
       z-index: 1;
@@ -54,22 +63,39 @@
       padding: 20px;
     }
 
-    /* Logo central cu glow subtil și hover */
+    /* Logo principal */
+    .main-logo {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      background-image: url('logo.png'); /* Logo-ul care îți place */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Logo 2 cu sclipire subtilă */
     .central-logo {
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
       margin-bottom: 30px;
       background-image: url('logo2.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       filter: drop-shadow(0 0 5px #d1b87a);
-      transition: transform 0.3s ease, filter 0.3s ease;
+      animation: glow 2s infinite alternate;
+      transition: transform 0.3s ease;
     }
 
     .central-logo:hover {
       transform: scale(1.05);
-      filter: drop-shadow(0 0 10px #d1b87a);
+    }
+
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 3px #d1b87a); }
+      50% { filter: drop-shadow(0 0 15px #d1b87a); }
+      100% { filter: drop-shadow(0 0 3px #d1b87a); }
     }
 
     /* Buton Fa-ti o programare */
@@ -137,7 +163,7 @@
       transform: translateY(-3px);
     }
 
-    /* Meta info: Vezi locatie + copyright */
+    /* Meta info */
     .meta-info {
       color: #d1b87a;
       font-size: 0.9rem;
@@ -166,6 +192,10 @@
 
     /* Responsive */
     @media (max-width: 450px) {
+      .main-logo {
+        width: 150px;
+        height: 150px;
+      }
       .central-logo {
         width: 180px;
         height: 180px;
@@ -186,8 +216,13 @@
   </style>
 </head>
 <body>
+  <canvas id="particle-canvas"></canvas>
+
   <div class="content">
-    <!-- Logo central -->
+    <!-- Logo principal -->
+    <div class="main-logo"></div>
+
+    <!-- Logo 2 cu sclipire -->
     <div class="central-logo"></div>
 
     <!-- Buton Fa-ti o programare -->
@@ -207,7 +242,7 @@
       </a>
     </div>
 
-    <!-- Meta info: Vezi locatie + copyright -->
+    <!-- Meta info -->
     <div class="meta-info">
       <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
         <i class="fas fa-map-marker-alt"></i> Vezi locatie
@@ -215,5 +250,64 @@
       <span>© 2025 MEN'S CAVE BARBERSHOP</span>
     </div>
   </div>
+
+  <!-- Script particule fundal -->
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let w, h;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function Particle() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.radius = Math.random() * 2 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.speedY = (Math.random() - 0.5) * 0.5;
+      this.alpha = Math.random() * 0.7 + 0.3;
+    }
+
+    Particle.prototype.update = function() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if(this.x < 0) this.x = w;
+      if(this.x > w) this.x = 0;
+      if(this.y < 0) this.y = h;
+      if(this.y > h) this.y = 0;
+    }
+
+    Particle.prototype.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(209,184,122,' + this.alpha + ')';
+      ctx.fill();
+    }
+
+    function initParticles(count) {
+      particles = [];
+      for(let i=0;i<count;i++){
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,w,h);
+      for(let p of particles){
+        p.update();
+        p.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    initParticles(80);
+    animate();
+  </script>
 </body>
 </html>
