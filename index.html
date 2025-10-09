@@ -50,9 +50,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 10px;
     }
 
-    /* Logo central cu halo subtil */
     .central-logo {
       position: relative;
       width: 420px;
@@ -88,6 +88,8 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
+      width: 100%;
+      max-width: 400px;
     }
 
     .button {
@@ -96,6 +98,7 @@
       justify-content: center;
       gap: 10px;
       padding: 15px 25px;
+      width: 100%;
       border: 2px solid #d1b87a;
       border-radius: 10px;
       color: #d1b87a;
@@ -137,6 +140,7 @@
       justify-content: center;
       gap: 30px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .social-button {
@@ -185,11 +189,40 @@
       border-radius: 50%;
     }
 
+    /* Responsive mobile */
     @media (max-width: 500px) {
-      .central-logo { width: 360px; height: 360px; margin-bottom: 30px; }
-      .button { font-size: 1rem; padding: 12px 20px; }
-      .social-button { font-size: 2rem; }
-      .meta-info { font-size: 0.85rem; gap: 10px; }
+      .central-logo {
+        width: 280px;
+        height: 280px;
+        margin-bottom: 25px;
+      }
+
+      .button {
+        font-size: 1rem;
+        padding: 12px 15px;
+      }
+
+      .button-area {
+        gap: 12px;
+      }
+
+      .social-button {
+        font-size: 2rem;
+      }
+
+      .meta-info {
+        font-size: 0.85rem;
+        gap: 10px;
+      }
+
+      .logo-top-left {
+        width: 80px;
+        height: 80px;
+      }
+
+      .social-area {
+        gap: 15px;
+      }
     }
   </style>
 </head>
