@@ -52,8 +52,9 @@
       justify-content: center;
     }
 
-    /* Logo central inițial */
+    /* Logo central cu halo subtil */
     .central-logo {
+      position: relative;
       width: 420px;
       height: 420px;
       margin-bottom: 40px;
@@ -63,6 +64,18 @@
       background-position: center;
       filter: drop-shadow(0 0 20px #d1b87a);
       transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .central-logo::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(209,184,122,0.25) 0%, transparent 70%);
+      z-index: -1;
     }
 
     .central-logo:hover {
