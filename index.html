@@ -110,8 +110,6 @@
       background-color: transparent;
       box-shadow: 0 0 10px rgba(209,184,122,0.2);
       transition: all 0.3s ease;
-      max-width: 350px;
-      width: 100%;
       margin-bottom: 25px;
     }
 
@@ -193,17 +191,27 @@
         left: 10px;
       }
       .central-logo {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 10px;
+        width: 240px; /* +20% */
+        height: 240px; /* +20% */
+        margin-bottom: 15px;
+        animation: glowMobile 2s infinite alternate;
       }
+      @keyframes glowMobile {
+        0% { filter: drop-shadow(0 0 5px #d1b87a); }
+        50% { filter: drop-shadow(0 0 25px #d1b87a); } /* glow mai intens */
+        100% { filter: drop-shadow(0 0 5px #d1b87a); }
+      }
+
+      /* Butonul sub logo, cât textul */
       .button {
         font-size: 0.95rem;
         padding: 10px 15px;
         margin-bottom: 15px;
+        width: auto; /* nu lărgim la 100% */
       }
+
       .social-title {
-        margin-top: -10px;
+        margin-top: -5px;
         margin-bottom: 10px;
       }
       .social-area {
@@ -229,13 +237,13 @@
   <div class="content">
     <div class="central-logo"></div>
 
-    <!-- Buton actualizat -->
+    <!-- Butonul de programare direct sub logo -->
     <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" target="_blank" class="button">
       <i class="fas fa-calendar-check"></i>
       <span>Programare</span>
     </a>
 
-    <!-- Text social actualizat -->
+    <!-- Text social -->
     <p class="social-title">Vezi vibe-ul</p>
 
     <div class="social-area">
@@ -247,7 +255,6 @@
       </a>
     </div>
 
-    <!-- ✅ Text modificat aici -->
     <div class="meta-info">
       <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
         <i class="fas fa-map-marker-alt"></i> Unde suntem
