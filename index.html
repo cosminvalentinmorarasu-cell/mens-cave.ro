@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Reset și body */
     body {
       margin: 0;
       min-height: 100vh;
@@ -24,9 +23,9 @@
       color: #ffffff;
       font-family: 'Caviar Dreams', sans-serif;
       text-align: center;
+      padding: 20px;
     }
 
-    /* Titlu */
     h1 {
       font-size: 3rem;
       letter-spacing: 4px;
@@ -41,20 +40,15 @@
       color: #d1b87a;
     }
 
-    /* Butoane */
-    .links, .apps {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
+    .section {
+      margin-bottom: 40px;
     }
 
-    .links a, .apps a {
+    .button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 25px;
+      gap: 10px;
+      padding: 12px 30px;
       border: 1px solid #d1b87a;
       border-radius: 30px;
       color: #d1b87a;
@@ -63,12 +57,18 @@
       transition: all 0.3s ease;
     }
 
-    .links a:hover, .apps a:hover {
+    .button:hover {
       background-color: #d1b87a;
       color: #000000;
     }
 
-    /* Footer */
+    .buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
     footer {
       margin-top: 40px;
       font-size: 0.8rem;
@@ -76,7 +76,6 @@
       letter-spacing: 1px;
     }
 
-    /* Responsive */
     @media (max-width: 500px) {
       h1 {
         font-size: 2.2rem;
@@ -84,7 +83,7 @@
       h2 {
         font-size: 1rem;
       }
-      .links a, .apps a {
+      .button {
         padding: 10px 20px;
         font-size: 0.9rem;
       }
@@ -97,32 +96,39 @@
   <h1>MEN'S CAVE</h1>
   <h2>BARBERSHOP</h2>
 
-  <!-- Linkuri Social Media -->
-  <div class="links">
-    <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank">
-      <i class="fab fa-instagram"></i> Instagram
-    </a>
-    <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank">
-      <i class="fab fa-facebook-f"></i> Facebook
-    </a>
-    <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank">
-      <i class="fas fa-map-marker-alt"></i> Locație
+  <!-- Secțiune: Programări -->
+  <div class="section">
+    <a href="https://ailiber.ro/" target="_blank" class="button">
+      <i class="fas fa-calendar-check"></i> Rezervă acum
     </a>
   </div>
 
-  <!-- Linkuri aplicație -->
-  <div class="apps">
-    <a href="https://ailiber.ro/" target="_blank">
-      <i class="fas fa-calendar-check"></i> Programări Online
+  <!-- Secțiune: Locație -->
+  <div class="section">
+    <h2>Unde ne găsești</h2>
+    <a href="https://maps.app.goo.gl/kE2bSATbZAFLZscQA" target="_blank" class="button">
+      <i class="fas fa-map-marker-alt"></i> Vezi pe hartă
     </a>
-    <a href="https://apps.apple.com/" target="_blank">
-      <i class="fab fa-apple"></i> App Store
-    </a>
-    <a href="https://play.google.com/store" target="_blank">
-      <i class="fab fa-google-play"></i> Google Play
-    </a>
-    <a href="https://appgallery.huawei.com/" target="_blank">
-      <i class="fas fa-mobile-alt"></i> AppGallery
+  </div>
+
+  <!-- Secțiune: Social Media -->
+  <div class="section">
+    <h2>Aruncă un ochi în peștera noastră</h2>
+    <div class="buttons-container">
+      <a href="https://www.instagram.com/mens.cave.barbershop.iasi?igsh=MTg0YWV6ejVqaDdmcg==" target="_blank" class="button">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/share/16zdKtTQaW/" target="_blank" class="button">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+    </div>
+  </div>
+
+  <!-- Secțiune: Rating Google -->
+  <div class="section">
+    <h2>Ne poți evalua</h2>
+    <a href="https://www.google.com/search?q=mens+cave+barbershop+iasi&ludocid=YOUR_GOOGLE_PLACE_ID#lrd=0x0:0x0,1,,," target="_blank" class="button">
+      <i class="fas fa-star"></i> Vezi ratingul pe Google
     </a>
   </div>
 
