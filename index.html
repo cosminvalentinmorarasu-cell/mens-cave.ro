@@ -17,12 +17,11 @@
       background-color: #000;
       color: #fff;
       position: relative;
-      /* Eliminăm orice posibilitate de derulare */
       height: 100vh;
       overflow: hidden; 
     }
 
-    /* Fundalul: background.png - CLAR, FĂRĂ BLUR */
+    /* Fundalul: background.png (cel cu dungi) */
     body::before {
       content: "";
       position: fixed;
@@ -36,9 +35,9 @@
       background-position: center;
       background-repeat: no-repeat;
       
-      /* Strat semi-transparent negru peste imagine */
-      background-color: rgba(0, 0, 0, 0.6); 
-      background-blend-mode: darken;
+      /* Strat de întunecare subtil */
+      background-color: rgba(0, 0, 0, 0.9); /* Foarte închis, aproape negru solid */
+      background-blend-mode: multiply; /* Asigură că dungile se văd în continuare */
       opacity: 1; 
       filter: none; 
       z-index: 0;
@@ -51,7 +50,7 @@
       max-width: 900px;
       height: 100vh; 
       margin: 0 auto;
-      padding: 60px 20px 40px 20px; 
+      padding: 40px 20px 0px 20px; /* Am micșorat padding-ul de jos */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -68,45 +67,44 @@
         position: relative; 
     }
     
-    /* Logoul principal (stânga sus) */
+    /* Logoul principal (stânga sus) - MAI MARE */
     .logo-top-left {
       position: absolute;
       top: 0px; 
       left: 0px; 
-      width: 100px; 
-      height: 100px;
-      /* CALEA PNG */
+      width: 150px; /* MAI MARE */
+      height: 150px;
       background-image: url('logo.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       z-index: 10; 
-      box-shadow: 0 0 15px rgba(209,184,122,0.6);
-      border-radius: 50%;
+      /* Am scos box-shadow-ul pentru un aspect mai curat */
     }
 
-    /* Logoul secundar (dreapta jos) */
+    /* Logoul secundar (dreapta jos) - ELEMENT DE DESIGN */
     .logo-bottom-right {
       position: fixed; 
-      bottom: 20px; 
-      right: 20px; 
-      width: 80px; 
-      height: 80px;
+      bottom: 0px; 
+      right: 0px; 
+      width: 400px; /* Foarte mare */
+      height: 400px;
       /* CALEA PNG */
       background-image: url('logo2.png'); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 10;
-      box-shadow: 0 0 10px rgba(209,184,122,0.5);
-      border-radius: 50%;
+      z-index: 0; /* Sub butoane, doar pentru design */
+      opacity: 0.05; /* Foarte transparent, ca o textură subtilă */
+      filter: grayscale(100%); /* îl facem alb-negru/întunecat */
     }
 
     h1 {
       font-size: 3rem; 
       letter-spacing: 4px;
       margin: 0;
-      padding-top: 20px; 
+      padding-top: 5px; 
+      color: #d1b87a;
     }
 
     h2 {
@@ -123,9 +121,8 @@
         max-width: 600px;
         display: grid;
         grid-template-columns: 1fr 1fr; 
-        gap: 15px;
+        gap: 20px; /* Spațiu mai mare între butoane */
         margin: auto; 
-        padding-bottom: 20px;
     }
 
     .button {
@@ -141,28 +138,39 @@
       font-weight: 600;
       font-size: 1rem;
       transition: all 0.2s ease;
-      background-color: rgba(20, 20, 20, 0.85); 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      /* Butoane mai elegante: Fără fundal negru */
+      background-color: transparent; 
+      box-shadow: none; 
       height: 60px; 
     }
 
     .button:hover {
-      background-color: #d1b87a;
-      color: #000;
+      background-color: rgba(209,184,122,0.1); /* Fundal auriu subtil la hover */
+      color: #d1b87a;
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(209,184,122,0.4);
+      box-shadow: 0 4px 10px rgba(209,184,122,0.3);
     }
     
     .button i {
         font-size: 1.2rem;
+        color: #d1b87a;
+    }
+
+    /* Footer - FĂCUT VIZIBIL */
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #d1b87a; /* Culoare aurie, vizibilă */
+      padding: 10px 0;
+      width: 100%;
     }
 
     /* Adaptare pentru mobil */
     @media (max-width: 700px) {
         body { overflow-y: auto; }
         .content { height: auto; justify-content: flex-start; padding-top: 40px; }
-        .logo-top-left { width: 80px; height: 80px; top: 10px; left: 10px; }
-        .logo-bottom-right { width: 60px; height: 60px; bottom: 10px; right: 10px; }
+        .logo-top-left { width: 100px; height: 100px; top: 10px; left: 10px; }
+        .logo-bottom-right { display: none; } /* Ascundem logo-ul mare de fundal pe mobil */
         h1 { font-size: 2.5rem; padding-top: 10px; }
         h2 { font-size: 1.2rem; margin-bottom: 30px; }
         .button-area {
@@ -170,14 +178,6 @@
             gap: 10px;
         }
         .button { padding: 12px 10px; font-size: 0.9rem; height: 50px; }
-    }
-    
-    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #777;
-      padding-top: 20px; 
-      width: 100%;
     }
   </style>
 </head>
