@@ -1036,7 +1036,7 @@
     <section class="experience-section">
         <div class="container">
             <div class="experience-intro">
-                <h2>Experiența Men's Cave Barbershop</h2> 
+                <h2>Experiența Men's Cave Barbershop </h2>
                 <p>
                     Bine ați venit în sanctuarul bărbaților care pun preț pe calitate. De la mediul nostru relaxant, la cei mai buni stiliști și barberi, îți oferim o experiență de îngrijire rafinată, care îți respectă timpul și te menține impecabil. Cu ani de experiență în perfecționarea meșteșugului, am găsit echilibrul perfect între grooming-ul de top și relaxare, asigurându-ne că pleci simțindu-te încrezător și cu un stil autentic.
                 </p>
@@ -1066,6 +1066,7 @@
         <div class="marquee-content">
             <span class="marquee-item"><img src="png12.png" alt="Men's Cave Barbershop Logo Centered"></span>
         </div>
+       
     </div>
     
     <section class="our-craft-section">
@@ -1117,8 +1118,8 @@
                 
                 <a href="https://ailiber.ro/locations/347/mens-cave-barbershop" class="btn btn-primary" target="_blank" style="margin-bottom: 30px; width: 250px;">Rezervă-ți locul</a>
                  <div class="social-links">
-                    <a href="https://instagram.com/mens.cave.barbershop.iasi" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100089934671883" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="instagram://user?username=mens.cave.barbershop.iasi" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                        <a href="fb://page/100089934671883" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
 
@@ -1152,9 +1153,8 @@
             const hamburger = document.getElementById('hamburger-menu');
             const fullMenu = document.getElementById('full-menu');
             const closeBtn = document.getElementById('menu-close');
-            // const socialLinksDesktop = document.querySelector('.footer-logo-container .social-links'); // Variabilă nefolosită acum
-            
-            // Logica Hamburger Menu
+            const socialLinksDesktop = document.querySelector('.footer-logo-container .social-links');
+
             const toggleMenu = () => {
                 const isOpen = fullMenu.classList.toggle('open');
                 document.body.style.overflow = isOpen ? 'hidden' : 'auto';
@@ -1175,7 +1175,33 @@
                 });
             });
 
-            // Logica JS pentru social media a fost eliminată pentru a permite CSS-ului să funcționeze corect pe mobil.
+            // Logica pentru aranjarea și dimensiunile social media pe ambele platforme
+            const applySocialStyles = () => {
+                if (window.innerWidth >= 768) {
+                    // DESKTOP: Aranjament orizontal, sub buton, dimensiunea stabilită (6em)
+                    socialLinksDesktop.style.display = 'flex';
+                    socialLinksDesktop.style.flexDirection = 'row';
+                    socialLinksDesktop.style.justifyContent = 'center'; /* Centrat sub logo/buton */
+                    socialLinksDesktop.style.alignItems = 'center';
+                    socialLinksDesktop.style.gap = '15px';
+                    socialLinksDesktop.style.marginTop = '10px';
+                    socialLinksDesktop.style.paddingLeft = '0';
+                    socialLinksDesktop.querySelectorAll('a').forEach(a => a.style.fontSize = '6em');
+                } else {
+                    // MOBILE: Aranjament orizontal, stânga, dimensiune 2em
+                    socialLinksDesktop.style.display = 'flex';
+                    socialLinksDesktop.style.flexDirection = 'row';
+                    socialLinksDesktop.style.justifyContent = 'flex-start';
+                    socialLinksDesktop.style.gap = '15px';
+                    socialLinksDesktop.style.marginTop = '-20px'; /* Mutat sus, sub buton */
+                    socialLinksDesktop.style.paddingLeft = '0';
+                    socialLinksDesktop.querySelectorAll('a').forEach(a => a.style.fontSize = '2em');
+                }
+            };
+
+            // Apelăm funcția la încărcare și la redimensionare
+            applySocialStyles();
+            window.addEventListener('resize', applySocialStyles);
         });
     </script>
 </body>
