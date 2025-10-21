@@ -10,9 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        /* ==================================== */
-        /* 1. VARIABILE ȘI RESETARE DE BAZĂ */
-        /* ==================================== */
         :root {
             --color-dark: #202020; 
             --color-dark-text: #444444; 
@@ -38,11 +35,10 @@
             font-weight: 400; 
             color: var(--color-dark-text);
             line-height: 1.6;
-            /* CHEIE: Previne scroll-ul orizontal cauzat de deplasări */
             overflow-x: hidden;
         }
         .container {
-            overflow-x: hidden; /* Cheie: Previne scroll-ul orizontal în containere */
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -65,7 +61,6 @@
             letter-spacing: normal; 
         }
         
-        /* LINIUȚA SCURTĂ SUB H3 (Păstrată pentru toate) */
         .features-grid h3::before {
             content: "";
             display: block;
@@ -76,7 +71,6 @@
             margin-left: 0; 
         }
         
-        /* Alinierea liniuței scurte sub H3 pe cardul al treilea (la stânga) */
         .feature-card:nth-child(3) h3::before {
             margin: 0 0 8px 0; 
         }
@@ -86,10 +80,8 @@
             font-size: 0.9em;
             line-height: 1.4;
             color: var(--color-dark-text);
-            /* Forțează textul pe mai multe rânduri (Desktop) */
             max-width: 350px; 
         }
-        /* Aliniere text P la stânga pentru toate cardurile */
         .feature-card:nth-child(1) p, .feature-card:nth-child(2) p, .feature-card:nth-child(3) p {
             margin: 0 auto 0 0; 
         }
@@ -141,9 +133,7 @@
             color: var(--color-light);
         }
         
-        /* ==================================== */
-        /* STIL BUTON TITLU PULSANT */
-        /* ==================================== */
+        
         
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(142, 10, 10, 0.7); }
@@ -164,9 +154,7 @@
         }
 
 
-        /* ==================================== */
-        /* 2. HEADER & NAVIGAȚIE */
-        /* ==================================== */
+        
         .header {
             background-color: var(--color-light);
             position: fixed;
@@ -184,7 +172,6 @@
             position: relative; 
         }
         
-        /* Modificat: Logo-ul este acum un link */
         .nav-bar .logo {
             display: block;
             width: 287.5px; 
@@ -197,7 +184,6 @@
             color: transparent; 
         }
 
-        /* Nav Links pe Desktop */
         .nav-links {
             display: none; 
             align-items: center;
@@ -226,9 +212,7 @@
             margin-right: 5px;
         }
 
-        /* ASCUNDERE/AFISARE CHEIE: Hamburger menu */
         .hamburger {
-            /* Vizibil pe mobil */
             display: block; 
             cursor: pointer;
             padding: 10px;
@@ -236,7 +220,7 @@
         }
         @media (min-width: 768px) {
             .hamburger {
-                display: none; /* Ascunde pe desktop */
+                display: none;
             }
         }
         .hamburger-line {
@@ -248,7 +232,6 @@
             transition: var(--transition-speed);
         }
         
-        /* Meniul full-screen (Mobile) */
         .full-menu {
             position: fixed;
             top: 0;
@@ -257,7 +240,7 @@
             height: 100%;
             background-color: var(--color-dark);
             z-index: 999;
-            display: flex; /* Păstrează flex pentru centrul conținutului */
+            display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
@@ -265,7 +248,6 @@
             transition: opacity var(--transition-speed), visibility var(--transition-speed);
         }
         .full-menu.open {
-             /* NOU: Afișat când e deschis */
             opacity: 1;
             visibility: visible;
         }
@@ -300,9 +282,7 @@
         }
 
 
-        /* ==================================== */
-        /* 3. SECȚIUNEA EROU (HERO) */
-        /* ==================================== */
+        
         .hero {
             padding-top: var(--header-height);
             background-color: var(--color-dark);
@@ -317,7 +297,6 @@
             text-align: center;
         }
         
-        /* CORECTIE MOBILE HERO: Mută imaginea cu 40px la stânga pe mobil */
         @media (max-width: 767px) {
             .hero {
                 background-position: calc(50% - 40px) center !important; 
@@ -335,9 +314,7 @@
             font-weight: 300;
         }
 
-        /* ==================================== */
-        /* 4. EXPERIENȚA MEN'S CAVE - ALINIERE 2-1 (FINAL DESKTOP) */
-        /* ==================================== */
+        
         .experience-section {
             position: relative;
             margin-top: 0; 
@@ -356,16 +333,14 @@
             width: 90%; 
             height: 100%;
             background-image: url('background.webp'); 
-            background-size: cover; /* Desktop: cover */
+            background-size: cover;
             background-position: left center; 
             opacity: 0.1; 
             z-index: -1; 
         }
         
-        /* CORECTIE MOBILE: background2.webp vizibilitate maximă */
         @media (max-width: 767px) {
              .experience-section::before {
-                 /* CHEIE: Vizibilitate maximă pe mobil (anulăm reducerea de 30%) */
                  background-size: cover; 
                  background-position: center center;
                  width: 100%;
@@ -419,7 +394,6 @@
             max-width: 1100px; 
             padding-top: 40px; 
             padding-bottom: 40px; 
-            /* Mutare carduri: X (50px) și Y (-70px) */
             transform: translateX(50px) translateY(-70px); 
         }
 
@@ -431,24 +405,20 @@
             min-height: auto; 
         }
         
-        /* 1. ATMOSFERĂ RELAXATĂ (Coloana 1) - MUTAT 200PX DREAPTA + 20px JOS */
         .feature-card:nth-child(1) {
              padding-left: 200px; 
-             border-right: 2px solid var(--color-accent); /* Linia roșie verticală dreapta */
-             transform: translateY(20px); /* Mutat încă 2cm jos */
+             border-right: 2px solid var(--color-accent);
+             transform: translateY(20px);
         }
-        /* 2. PASIUNE PENTRU DETALII ȘI STIL (Coloana 2) - MUTAT 20px JOS */
         .feature-card:nth-child(2) {
             border-right: none !important;
-            transform: translateY(20px); /* Mutat încă 2cm jos */
+            transform: translateY(20px);
         }
 
-        /* Asigurăm că restul nu au linie verticală */
         .feature-card:nth-child(3) {
             border-right: none !important;
         }
 
-        /* 3. ECHIPĂ CU EXPERIENȚĂ ȘI ENERGIE NOUĂ (Ocupă ambele coloane, ALINIAT STÂNGA) */
         .feature-card:nth-child(3) {
             grid-column: 1 / span 2; 
             padding-left: 300px; 
@@ -457,7 +427,6 @@
             padding-top: 50px; 
         }
         
-        /* Eliminarea Liniei Orizontale Lungă */
         .feature-card:nth-child(3)::before {
             content: none; 
         }
@@ -466,9 +435,7 @@
             display: none; 
         }
         
-        /* ==================================== */
-        /* NOUĂ SECȚIUNE: MARQUEE (LOGO) */
-        /* ==================================== */
+        
         
         .marquee-section {
             background-color: transparent; 
@@ -482,7 +449,6 @@
             align-items: center;
             height: auto; 
             transform: translateX(0); 
-            /* Mutare 7cm sus pentru png12.png */
             margin-top: -70px; 
         }
         
@@ -500,24 +466,19 @@
             opacity: 1; 
         }
         .marquee-item img {
-            /* Desktop: 138px */
             height: 138px; 
             width: auto;
             display: block;
         }
 
-        /* CORECTIE MOBILE: png12 micșorat cu 20% */
         @media (max-width: 767px) {
              .marquee-item img {
-                 /* 138px * 0.80 = 110.4px */
                  height: 110.4px; 
              }
         }
 
 
-        /* ==================================== */
-        /* 5. SECȚIUNEA OUR CRAFT (FUNDAL) */
-        /* ==================================== */
+        
         .our-craft-section {
             padding-top: var(--header-height);
             background-image: url('background2.webp'); 
@@ -545,9 +506,7 @@
             display: none; 
         }
         
-        /* ==================================== */
-        /* 6. SECȚIUNEA SERVICII */
-        /* ==================================== */
+        
         .services-section {
             padding-top: var(--padding-section-y);
             padding-bottom: 20px; 
@@ -556,7 +515,6 @@
             position: relative; 
             z-index: 1;
             perspective: 1000px;
-            /* Desktop: Overflow vizibil */
             overflow: visible; 
         }
         .services-section::before {
@@ -595,12 +553,11 @@
             position: relative; z-index: 2;
         }
         
-        /* CORECTIE MOBILE: Servicii grid adaptat pentru a nu ieși din ecran */
         @media (max-width: 767px) {
             .services-grid {
-                grid-template-columns: 1fr; /* O singură coloană pe mobil */
+                grid-template-columns: 1fr;
                 padding: 0 20px; 
-                gap: 15px; /* Spațiu mai mic între carduri pe mobil */
+                gap: 15px;
             }
         }
 
@@ -616,7 +573,6 @@
             cursor: pointer;
         }
         
-        /* CORECTAT: Anulăm transformarea la hover pentru a elimina banda de rulare pe desktop */
         .service-card:hover {
             transform: none; 
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -660,28 +616,23 @@
             font-weight: 400; 
         }
         
-        /* ==================================== */
-        /* RESPONSIVITATE (MAX 767PX) - CORECTAT FINAL */
-        /* ==================================== */
+        
         @media (max-width: 767px) {
             
-            /* Anulăm mutarea întregului container de carduri */
             .features-grid {
                 grid-template-columns: 1fr;
                 padding: 0 20px;
-                transform: none !important; /* ANULAT: Mutarea X/Y a întregii grile */
+                transform: none !important;
                 padding-top: 20px; 
                 padding-bottom: 20px; 
             }
             .feature-card {
-                /* Resetăm padding-urile custom și transformările individuale */
                 padding: 10px 20px 20px 20px !important;
-                transform: none !important; /* ANULAT: Mutarea Y pe carduri 1 și 2 */
+                transform: none !important;
                 text-align: left !important;
                 border-right: none !important;
                 border-top: none !important; 
             }
-            /* ANULARE CHEIE: Resetăm padding-urile mari care cauzează spațiul alb în dreapta */
             .feature-card:nth-child(1), .feature-card:nth-child(3) {
                  padding-left: 20px !important; 
                  padding-right: 20px !important;
@@ -690,7 +641,6 @@
                 padding-top: 20px !important; 
             }
             
-            /* Liniuța scurtă aliniată stânga pe mobil */
             .features-grid h3::before, .feature-card:nth-child(3) h3::before {
                 margin: 0 0 8px 0 !important;
             }
@@ -699,22 +649,18 @@
                  max-width: 100% !important; 
             }
 
-            /* Logo Centrat */
             .marquee-section {
                 transform: none !important; 
                 margin-top: 0 !important;
             }
             
-            /* Footer Responsive (o singură coloană) */
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: left;
             }
-            /* Resetăm alinierea specifică la centru/dreapta pe mobil */
             .footer-logo-container { align-items: flex-start; }
             .footer-logo-large { background-position: left center; }
             .footer-details { 
-                /* Adresa și Programul sunt ascunse pe mobil */
                 display: none;
             }
             .footer-grid h4 { 
@@ -727,38 +673,33 @@
             .footer ul { text-align: left; }
             .footer ul li span { display: block; min-width: auto; }
             
-            /* CORECTIE: Copyright aliniat dreapta pe mobil */
             .footer-copyright { 
                 text-align: right !important; 
                 padding-right: 20px; 
                 order: 4; 
             }
             
-            /* Social Media Footer - Aranjate pe orizontală sub butonul de programare */
             .footer-social-middle { 
-                display: none; /* Ascundem coloana de mijloc din grid */
+                display: none;
             }
-            /* NOU: Reorganizăm Social Media în coloana 1 (logo) */
             .footer-logo-container {
                 align-items: flex-start;
                 padding-bottom: 10px;
             }
             .footer-logo-container .social-links {
                 display: flex !important;
-                flex-direction: row; /* CHEIE: Orizontală */
+                flex-direction: row;
                 justify-content: flex-start;
                 gap: 15px;
                 padding-left: 0;
-                margin-top: -20px; /* Mutăm social media mai sus, sub buton */
+                margin-top: -20px;
             }
             .footer-logo-container .social-links a {
-                 font-size: 2em; /* Dimensiunea normală pentru mobil */
+                 font-size: 2em;
             }
         }
 
-        /* ==================================== */
-        /* 7. SECȚIUNEA MEMBERSHIPS (RITUAL) */
-        /* ==================================== */
+        
         .memberships-section {
             margin-top: 0; 
             padding-top: 0; 
@@ -767,7 +708,7 @@
             color: var(--color-light);
             text-align: center;
             background-image: url('png9.png'); 
-            background-size: cover; /* Desktop: cover */
+            background-size: cover;
             background-position: center;
             min-height: auto; 
             display: flex;
@@ -777,7 +718,6 @@
             z-index: 10; 
         }
         
-        /* CORECTIE MOBILE: png9 mutat INCA 30px la stânga (50% - 300px - 30px = 50% - 330px) */
         @media (max-width: 767px) {
              .memberships-section {
                  background-position: calc(50% - 330px) center !important; 
@@ -803,9 +743,7 @@
             font-weight: 400; 
         }
         
-        /* ==================================== */
-        /* 8. FOOTER - FOOTER MARE (DESIGN FINAL) */
-        /* ==================================== */
+        
         .footer {
             background-color: var(--color-dark);
             color: var(--color-light);
@@ -820,7 +758,6 @@
             align-items: flex-start; 
         }
 
-        /* COLOANA 1: LOGO MARE + BUTON (CENTRUL) */
         .footer-logo-container {
             display: flex;
             flex-direction: column;
@@ -828,7 +765,6 @@
             justify-content: center;
             order: initial;
         }
-        /* Pe mobil, aliniem stânga */
         @media (max-width: 767px) {
             .footer-logo-container {
                 align-items: flex-start;
@@ -852,7 +788,6 @@
             color: transparent;
             margin: 0 0 20px 0; 
         }
-        /* Pe mobil, alinăm stânga */
         @media (max-width: 767px) {
              .footer-logo-large {
                  background-position: left center;
@@ -860,20 +795,17 @@
         }
         .footer-logo { display: none; }
 
-        /* Stil Buton Rezervă-ți locul (CENTRUL) */
         .footer-logo-container .btn-primary {
             width: 250px; 
             margin-bottom: 30px;
             align-self: center; 
         }
-        /* Pe mobil, scoatem margin-bottom și aliniem stânga */
         @media (max-width: 767px) {
              .footer-logo-container .btn-primary {
                  margin-bottom: 10px;
              }
         }
 
-        /* COLOANA 2: LINKURI SOCIALE (CENTRALE - UNA SUB ALTA, MĂRIT LA 6EM) */
         .footer-social-middle {
             display: flex;
             flex-direction: column;
@@ -882,18 +814,17 @@
             height: 100%;
         }
         
-        /* Pe DESKTOP: Aranjăm SOCIAL MEDIA sub butonul de programare (coloana 1) */
         @media (min-width: 768px) {
              .footer-social-middle {
                  display: none;
              }
             .footer-logo-container .social-links {
-                 display: flex !important; /* Facem vizibil pe desktop */
-                 flex-direction: row; /* CHEIE: Orizontală */
+                 display: flex !important;
+                 flex-direction: row;
                  justify-content: center;
                  gap: 15px;
                  padding: 0;
-                 margin-top: 10px; /* Aliniat estetic sub buton */
+                 margin-top: 10px;
             }
             .footer-logo-container .social-links a {
                  font-size: 6em; 
@@ -902,12 +833,10 @@
             }
         }
 
-        /* COLOANA 3: ADRESĂ & PROGRAM (ALINIATE DREAPTA) */
         .footer-details {
             text-align: right;
             grid-column: 3; 
         }
-        /* Pe mobil, ascundem detaliile */
         @media (max-width: 767px) {
              .footer-details {
                  display: none;
@@ -928,7 +857,6 @@
             text-align: right; 
         }
         
-        /* Stil pentru liniile decorative sub titlurile din footer (ADRESĂ, PROGRAM) */
         .footer-grid h4::before {
             content: '';
             position: absolute;
@@ -965,7 +893,6 @@
             font-weight: 700;
         }
         
-        /* Linkul "DIRECȚII" - Modificat la alb */
         .footer-content a {
             color: var(--color-light) !important;
         }
@@ -973,32 +900,29 @@
             color: var(--color-light) !important;
         }
         
-        /* COPIRIGHT (ULTIMUL RÂND - CENTRAT) */
         .footer-copyright {
             grid-column: 1 / span 3; 
-            text-align: center; /* Centrat */
+            text-align: center;
             font-size: 0.8em;
             color: #CCCCCC;
             margin-top: 20px;
             padding-top: 10px;
         }
-        /* Pe mobil, aliniat dreapta */
         @media (max-width: 767px) {
             .footer-copyright {
                 text-align: right !important; 
                 padding-right: 20px;
             }
-             /* Reorganizăm Social Media în coloana 1 (logo) pe mobil */
             .footer-logo-container .social-links {
                 display: flex !important;
-                flex-direction: row; /* CHEIE: Orizontală */
+                flex-direction: row;
                 justify-content: flex-start;
                 gap: 15px;
                 padding-left: 0;
-                margin-top: -20px; /* Mutăm social media mai sus, sub buton */
+                margin-top: -20px;
             }
             .footer-logo-container .social-links a {
-                 font-size: 2em; /* Dimensiunea normală pentru mobil */
+                 font-size: 2em;
             }
         }
     </style>
@@ -1168,7 +1092,7 @@
             document.querySelectorAll('.menu-list a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (fullMenu.classList.contains('open')) {
-                        // Voi închide meniul după o mică întârziere
+                        
                         setTimeout(() => {
                              fullMenu.classList.remove('open');
                              document.body.style.overflow = 'auto';
@@ -1177,31 +1101,31 @@
                 });
             });
 
-            // Logica pentru aranjarea și dimensiunile social media pe ambele platforme
+            
             const applySocialStyles = () => {
                 if (window.innerWidth >= 768) {
-                    // DESKTOP: Aranjament orizontal, sub buton, dimensiunea stabilită (6em)
+                    
                     socialLinksDesktop.style.display = 'flex';
                     socialLinksDesktop.style.flexDirection = 'row';
-                    socialLinksDesktop.style.justifyContent = 'center'; /* Centrat sub logo/buton */
+                    socialLinksDesktop.style.justifyContent = 'center';
                     socialLinksDesktop.style.alignItems = 'center';
                     socialLinksDesktop.style.gap = '15px';
                     socialLinksDesktop.style.marginTop = '10px';
                     socialLinksDesktop.style.paddingLeft = '0';
                     socialLinksDesktop.querySelectorAll('a').forEach(a => a.style.fontSize = '6em');
                 } else {
-                    // MOBILE: Aranjament orizontal, stânga, dimensiune 2em
+                    
                     socialLinksDesktop.style.display = 'flex';
                     socialLinksDesktop.style.flexDirection = 'row';
                     socialLinksDesktop.style.justifyContent = 'flex-start';
                     socialLinksDesktop.style.gap = '15px';
-                    socialLinksDesktop.style.marginTop = '-20px'; /* Mutat sus, sub buton */
+                    socialLinksDesktop.style.marginTop = '-20px';
                     socialLinksDesktop.style.paddingLeft = '0';
                     socialLinksDesktop.querySelectorAll('a').forEach(a => a.style.fontSize = '2em');
                 }
             };
 
-            // Apelăm funcția la încărcare și la redimensionare
+            
             applySocialStyles();
             window.addEventListener('resize', applySocialStyles);
         });
@@ -1209,5 +1133,3 @@
 </body>
 
 </html>
-
-
